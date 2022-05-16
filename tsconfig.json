@@ -1,26 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "outDir": "./app/assets/javascripts/bundles",
+    "sourceMap": true,
     "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "module": "es2015",
+    "target": "es6",
+    "jsx": "react",
+    "removeComments": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./frontend/src/*"]
+    },
+    "typeRoots": ["types", "node_modules/@types"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/components", "src/custom.d.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
