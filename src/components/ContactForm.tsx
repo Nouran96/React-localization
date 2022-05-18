@@ -102,7 +102,7 @@ const ContactForm = ({
           ></Input>
         </div>
 
-        <Button>Contact Our Agents Now!</Button>
+        <Button type="button">Contact Our Agents Now!</Button>
       </form>
     </DoubleFrame>
   );

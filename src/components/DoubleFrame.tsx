@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+// import Slide from "react-reveal/Slide";
 
 const Wrapper = styled.div<{ maxWidth?: string }>`
   max-width: ${(props) => props.maxWidth || "500px"};
@@ -22,7 +23,7 @@ const Frame = styled.div<{ borderColor?: string; reverse?: boolean }>`
 const BodyWrapper = styled.div<{ bodyColor?: string }>`
   position: relative;
   z-index: 1;
-  background-color: #0d1926;
+  background-color: ${(p) => p.theme.darkBlue};
   color: ${(p) => p.bodyColor || "white"};
   padding: 2rem;
 `;
@@ -37,10 +38,12 @@ interface DoubleFrameProps {
 
 const DoubleFrame = (props: DoubleFrameProps) => {
   return (
+    // <Slide left>
     <Wrapper maxWidth={props.maxWidth}>
       <Frame borderColor={props.frameColor} reverse={props.reverseFrame} />
       <BodyWrapper bodyColor={props.bodyColor}>{props.children}</BodyWrapper>
     </Wrapper>
+    // </Slide>
   );
 };
 

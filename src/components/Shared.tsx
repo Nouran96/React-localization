@@ -6,4 +6,15 @@ const Underline = styled.span`
   background: white;
 `;
 
-export { Underline };
+const BlueTitle = styled.h1<{ size?: string; transform?: string }>`
+  color: ${(p) => p.theme.darkBlueText};
+  text-transform: ${(p) => p.transform || "normal"};
+  font-size: ${(p) => p.size || "2.8rem"};
+  font-weight: bold;
+`;
+
+const MainWrapper = styled.header`
+  padding: 7rem 12rem;
+`;
+
+export { Underline, BlueTitle, MainWrapper };

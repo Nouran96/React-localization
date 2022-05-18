@@ -7,3 +7,8 @@ declare module "*.webp" {
   const value: any;
   export default value;
 }
+
+declare module "react-reveal/*" {
+  const value: any;
+  export default value;
+}

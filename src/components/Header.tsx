@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
+import Zoom from "react-reveal/Zoom";
+import Slide from "react-reveal/Slide";
 
 import headerBg from "../assets/images/header_bg.webp";
 import ContactForm from "./ContactForm";
@@ -65,22 +67,26 @@ const Header: FunctionComponent<HeaderProps> = () => {
 
       <div className="container-fluid mt-5">
         <div className="row justify-content-between">
-          <div className="col-md-5">
-            <div className="d-flex flex-column justify-content-center my-4">
-              <Subtitle>Luxury Condos</Subtitle>
-              <Title>Royal</Title>
-              <Title>Oaks</Title>
-              <p className="text-white">
-                I'm a paragraph. Click here to add your own text and edit me.
-                I’m a great place for you to tell a story and let your users
-                know a little more about you.
-              </p>
+          <Zoom>
+            <div className="col-md-5">
+              <div className="d-flex flex-column justify-content-center my-4">
+                <Subtitle>Luxury Condos</Subtitle>
+                <Title>Royal</Title>
+                <Title>Oaks</Title>
+                <p className="text-white">
+                  I'm a paragraph. Click here to add your own text and edit me.
+                  I’m a great place for you to tell a story and let your users
+                  know a little more about you.
+                </p>
+              </div>
             </div>
-          </div>
+          </Zoom>
 
-          <div className="col-md-6">
-            <ContactForm showSubtitle />
-          </div>
+          <Slide left>
+            <div className="col-md-6">
+              <ContactForm showSubtitle />
+            </div>
+          </Slide>
         </div>
       </div>
     </Wrapper>
