@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 import DoubleFrame from "./DoubleFrame";
@@ -49,36 +50,36 @@ const ContactForm = ({
   title?: string;
   showSubtitle?: boolean;
 }) => {
+  const { t } = useTranslation();
+
   return (
     <DoubleFrame frameColor="white">
       {title ? (
-        <Title>{title}</Title>
+        <Title>{t(title)}</Title>
       ) : (
         <>
-          <Title>Your new</Title>
-          <Title>Home awaits.</Title>
+          <Title>{t("your-new")}</Title>
+          <Title>{t("home-awaits")}</Title>
         </>
       )}
       {showSubtitle && (
-        <span className="mt-2 d-block">
-          Contact us to get the best offer from our agents!
-        </span>
+        <span className="mt-2 d-block">{t("contact-us-for-best-offer")}</span>
       )}
 
       <form className="container-fluid mt-3 p-0">
         <div className="row px-0">
           <div className="col-lg-6 d-flex flex-column">
             <Label>
-              First Name <span className="text-white">*</span>
+              {t("first-name")} <span className="text-white">*</span>
             </Label>
-            <Input placeholder="Enter your first name" />
+            <Input placeholder={t("enter-first-name")} />
           </div>
 
           <div className="col-lg-6 d-flex flex-column">
             <Label>
-              Last Name <span className="text-white">*</span>
+              {t("last-name")} <span className="text-white">*</span>
             </Label>
-            <Input placeholder="Enter your last name" />
+            <Input placeholder={t("enter-last-name")} />
           </div>
         </div>
 
@@ -86,7 +87,7 @@ const ContactForm = ({
           <Label>
             Email <span className="text-white">*</span>
           </Label>
-          <Input placeholder="Enter your email" type="email" />
+          <Input placeholder={t("enter-email")} type="email" />
         </div>
 
         <div className="d-flex flex-column">
@@ -96,13 +97,13 @@ const ContactForm = ({
           <Input
             as="textarea"
             name="message"
-            placeholder="Enter your message"
+            placeholder={t("enter-message")}
             id="message"
             rows={6}
           ></Input>
         </div>
 
-        <Button type="button">Contact Our Agents Now!</Button>
+        <Button type="button">{t("contact-agents-now")}</Button>
       </form>
     </DoubleFrame>
   );

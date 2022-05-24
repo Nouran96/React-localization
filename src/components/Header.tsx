@@ -7,6 +7,7 @@ import headerBg from "../assets/images/header_bg.webp";
 import ContactForm from "./ContactForm";
 import Logo from "./Logo";
 import { Underline } from "./Shared";
+import { useTranslation } from "react-i18next";
 
 const Wrapper = styled.header`
   padding: 3rem 12rem;
@@ -52,14 +53,41 @@ const Title = styled.span`
 interface HeaderProps {}
 
 const Header: FunctionComponent<HeaderProps> = () => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (code: string) => {
+    i18n.changeLanguage(
+      code
+    ); /* Sends i81n the code of the language to change and the function in i18n.js takes this code and sets
+                              it to the local storage variable. The language detector detects this and translates the text that
+                              is either in a "t" function or inside a "Trans" component */
+  };
+
   return (
     <Wrapper>
       <div className="d-flex justify-content-between pb-5">
         <Logo />
 
         <div className="d-flex flex-column align-items-end justify-content-end gap-2">
-          <LangSwitch>Fr</LangSwitch>
-          <span className="text-white">Call Us Toll-Free</span>
+          {i18n.language === "en" ? (
+            <LangSwitch
+              onClick={() => {
+                changeLanguage("fr");
+              }}
+            >
+              Fr
+            </LangSwitch>
+          ) : (
+            <LangSwitch
+              onClick={() => {
+                changeLanguage("en");
+              }}
+            >
+              En
+            </LangSwitch>
+          )}
+
+          <span className="text-white">{t("call-us-toll-free")}</span>
           <Phone>1-800-000-0000</Phone>
           <Underline />
         </div>
@@ -70,14 +98,10 @@ const Header: FunctionComponent<HeaderProps> = () => {
           <Zoom>
             <div className="col-md-5">
               <div className="d-flex flex-column justify-content-center my-4">
-                <Subtitle>Luxury Condos</Subtitle>
+                <Subtitle>{t("luxury-condos")}</Subtitle>
                 <Title>Royal</Title>
                 <Title>Oaks</Title>
-                <p className="text-white">
-                  I'm a paragraph. Click here to add your own text and edit me.
-                  I’m a great place for you to tell a story and let your users
-                  know a little more about you.
-                </p>
+                <p className="text-white">{t("paragraph-one")}</p>
               </div>
             </div>
           </Zoom>

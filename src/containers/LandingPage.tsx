@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import PropertyInfo from "../components/PropertyInfo";
 import PhotosCarousel from "../components/PhotosCarousel";
 import StepsSection from "../components/StepsSection";
+import Footer from "../components/Footer";
 
 const LandingPage = () => {
   return (
@@ -23,6 +24,7 @@ const LandingPage = () => {
       ></iframe>
       <PhotosCarousel />
       <StepsSection />
+      <Footer />
     </div>
   );
 };

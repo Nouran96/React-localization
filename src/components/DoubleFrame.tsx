@@ -7,14 +7,18 @@ const Wrapper = styled.div<{ maxWidth?: string }>`
   position: relative;
 `;
 
-const Frame = styled.div<{ borderColor?: string; reverse?: boolean }>`
+const Frame = styled.div<{
+  borderColor?: string;
+  reverse?: boolean;
+  fullHeight?: boolean;
+}>`
   position: absolute;
   width: 100%;
-  height: calc(100% - 30px);
+  height: ${(p) => (p.fullHeight ? "100%" : "calc(100% - 30px)")};
   border: 10px solid ${(p) => p.borderColor || p.theme.main};
   ${({ reverse }) =>
     reverse
-      ? `left: -3rem;
+      ? `left: -2rem;
   `
       : `left: 3rem;`}
   top: -2rem;
@@ -26,6 +30,7 @@ const BodyWrapper = styled.div<{ bodyColor?: string }>`
   background-color: ${(p) => p.theme.darkBlue};
   color: ${(p) => p.bodyColor || "white"};
   padding: 2rem;
+  height: 100%;
 `;
 
 interface DoubleFrameProps {
@@ -34,13 +39,18 @@ interface DoubleFrameProps {
   frameColor?: string;
   bodyColor?: string;
   reverseFrame?: boolean;
+  fullHeight?: boolean;
 }
 
 const DoubleFrame = (props: DoubleFrameProps) => {
   return (
     // <Slide left>
     <Wrapper maxWidth={props.maxWidth}>
-      <Frame borderColor={props.frameColor} reverse={props.reverseFrame} />
+      <Frame
+        borderColor={props.frameColor}
+        reverse={props.reverseFrame}
+        fullHeight={props.fullHeight}
+      />
       <BodyWrapper bodyColor={props.bodyColor}>{props.children}</BodyWrapper>
     </Wrapper>
     // </Slide>
